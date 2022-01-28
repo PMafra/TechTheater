@@ -1,24 +1,17 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GlobalStyle from './assets/styles/GlobalStyle';
-import TransitionStyle from './assets/styles/TransitionStyle';
-import ExampleContext from './store/ExampleContext';
+import HomePage from './pages/HomePage/index';
 
 export default function App() {
-  const [example, setExample] = useState('');
-
   return (
-    <ExampleContext.Provider value={{
-      example, setExample,
-    }}
-    >
+    <>
+      <GlobalStyle />
       <Router>
-        <GlobalStyle />
-        <TransitionStyle />
-        <AppRoutes />
+        <Routes>
+          <Route exact path="/homepage/*" element={<HomePage />} />
+        </Routes>
       </Router>
-    </ExampleContext.Provider>
+    </>
   );
 }

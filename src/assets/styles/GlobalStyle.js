@@ -103,6 +103,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         line-height: 1;
+        background-color: #000000;
     }
     ol,
     ul {
