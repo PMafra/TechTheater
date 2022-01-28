@@ -1,27 +1,15 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
 import {
   Route,
-  useLocation,
   Routes,
-  useNavigate,
+  useLocation,
+  Navigate,
 } from 'react-router-dom';
 import Recommendations from './Recommendations/index';
 import HomePageLayout from '../../components/layouts/HomePage';
 
 export default function HomePage() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const baseRedirect = () => {
-    if (location.pathname === '/homepage') {
-      navigate('/homepage/recommendations');
-    }
-  };
-
-  useEffect(() => {
-    baseRedirect();
-  });
+  const { pathname } = useLocation();
 
   return (
     <HomePageLayout background="urlSrc">
@@ -29,11 +17,14 @@ export default function HomePage() {
       <Container>
         <Routes>
           <Route
-            path={`${location.pathname}/recommendations`}
+            path="/"
+            element={<Navigate to={`${pathname}/recommendations`} />}
+          />
+          <Route
             exact
+            path="/recommendations"
             element={<Recommendations />}
           />
-
         </Routes>
       </Container>
     </HomePageLayout>

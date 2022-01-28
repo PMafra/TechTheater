@@ -9,7 +9,7 @@ export default function App() {
       <GlobalStyle />
       <Router>
         <Routes>
-          <Route exact path="/homepage/*" element={<HomePage />} />
+          <Route path="/homepage/*" element={<HomePage />} />
         </Routes>
       </Router>
     </>
