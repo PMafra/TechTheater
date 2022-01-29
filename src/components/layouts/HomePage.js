@@ -1,31 +1,20 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
-import Page from '../Page';
-import { StyledContainer as Container } from '../Auth';
+import PageTemplate from '../templates/Page';
 
-export default function HomePageLayout({ background, children }) {
+export default function HomePageLayout({ children }) {
   return (
-    <Page background={background}>
-      <StyledContainer width="1040px" height="680px">
+    <PageTemplate width="85vw" height="100vh">
+      <Container>
         {children}
-      </StyledContainer>
-    </Page>
+      </Container>
+    </PageTemplate>
   );
 }
 
-const StyledContainer = styled(Container)`
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  flex-direction: row;
-  padding: 0;
-  background-color: red;
-  
-  & > * {
-    text-align: initial;
-  }
-
-  @media (max-width: 600px) {
-    flex-direction: column-reverse;
-  }
+const Container = styled.div`
+  padding: 30px;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
 `;
