@@ -1,15 +1,9 @@
 import axios from 'axios';
 
-const API_URL = '';
+const baseURL = process.env.REACT_APP_API_BASE_URL;
 
-const createHeaders = (token) => ({
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
+const instance = axios.create({
+  baseURL,
 });
 
-const example = (body, token) => axios.post(`${API_URL}/example`, body, createHeaders(token));
-
-export {
-  example,
-};
+export default instance;

@@ -2,11 +2,11 @@
 import styled from 'styled-components';
 
 export default function PageTemplate({
-  background, width, height, children,
+  background, width, height, backgroundColor, children,
 }) {
   return (
     <Page background={background}>
-      <Container width={width} height={height}>
+      <Container width={width} height={height} backgroundColor={backgroundColor}>
         {children}
       </Container>
     </Page>
@@ -32,7 +32,7 @@ const Container = styled.div`
 `;
 
 const Page = styled.div`
-  background: ${({ background }) => (background || '#ffffff')};
+  background: ${({ background }) => (background || 'red')};
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -41,7 +41,6 @@ const Page = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: red;
 
   @media (max-width: 600px) {
     padding: 0;
