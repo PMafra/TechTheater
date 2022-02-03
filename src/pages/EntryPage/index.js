@@ -6,9 +6,15 @@ export default function EntryPage() {
   return (
     <EntryPageLayout>
       <EntryPageContainer>
-        <Link to="/sign-in" width="200px" text="Sign-in" />
-        <Link to="/sign-up" width="200px" text="Sign-up" />
-        <Link to="/homepage" width="200px" text="Home" />
+        <Link to="/sign-in" width="200px">
+          Sign-in
+        </Link>
+        <Link to="/sign-up" width="200px">
+          Sign-up
+        </Link>
+        <Link to="/homepage" width="200px">
+          Home
+        </Link>
       </EntryPageContainer>
     </EntryPageLayout>
   );
