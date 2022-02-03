@@ -4,13 +4,16 @@ import Link from '../shared/Link';
 export default function Navbar() {
   return (
     <NavbarContainer>
-      <Link to="/" width="100px" fontSize="14px">
+      <Link to="/homepage" width="90px" fontSize="14px">
+        Home
+      </Link>
+      <Link to="/" width="90px" fontSize="14px">
         Entry
       </Link>
-      <Link to="/sign-in" width="100px" fontSize="14px">
+      <Link to="/sign-in" width="90px" fontSize="14px">
         Sign-in
       </Link>
-      <Link to="/sign-in" width="100px" fontSize="14px">
+      <Link to="/sign-in" width="90px" fontSize="14px">
         Sign-up
       </Link>
     </NavbarContainer>
