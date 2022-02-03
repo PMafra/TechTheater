@@ -2,9 +2,9 @@
 import PageTemplate from '../templates/Page';
 import { Container } from '../shared/Container';
 
-export default function HomePageLayout({ children }) {
+export default function EntryPageLayout({ children }) {
   return (
-    <PageTemplate width="85vw" height="100vh">
+    <PageTemplate width="700px" height="60vh" mobileMaxWidth="700px">
       <Container>
         {children}
       </Container>

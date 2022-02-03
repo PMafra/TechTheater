@@ -2,11 +2,16 @@
 import styled from 'styled-components';
 
 export default function PageTemplate({
-  background, width, height, backgroundColor, children,
+  background, width, height, backgroundColor, children, mobileMaxWidth,
 }) {
   return (
-    <Page background={background}>
-      <Container width={width} height={height} backgroundColor={backgroundColor}>
+    <Page background={background} mobileMaxWidth={mobileMaxWidth}>
+      <Container
+        width={width}
+        height={height}
+        backgroundColor={backgroundColor}
+        mobileMaxWidth={mobileMaxWidth}
+      >
         {children}
       </Container>
     </Page>
@@ -22,7 +27,7 @@ const Container = styled.div`
   padding: 0;
   background-color: ${({ backgroundColor }) => backgroundColor || '#000000'};
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({ mobileMaxWidth }) => mobileMaxWidth || '600px'}) {
     min-height: 100vh;
     height: auto;
     max-height: initial;
@@ -42,7 +47,7 @@ const Page = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({ mobileMaxWidth }) => mobileMaxWidth || '600px'}) {
     padding: 0;
   }
 `;
