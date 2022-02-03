@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MovieApi from '../../../services/MovieApi';
+import MovieBox from '../../../components/HomePage/Movie';
 
 export default function Recommendations() {
   const [moviesList, setMoviesList] = useState('');
@@ -34,9 +36,9 @@ export default function Recommendations() {
 
   if (!moviesList || !TVShowsList) {
     return (
-      <>
+      <Loading>
         loading
-      </>
+      </Loading>
     );
   }
 
@@ -46,26 +48,102 @@ export default function Recommendations() {
         Title
       </ListTitle>
       <MoviesList>
-        {moviesList?.map((movie) => (
-          <Movie key={movie.id}>
-            <img src={movie.image} alt="" />
-            {movie.title}
-          </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        {moviesList?.map(({ id, image, title }) => (
+          <MovieBox key={id} image={image} title={title} />
         ))}
       </MoviesList>
       <ListTitle>
         Title
       </ListTitle>
       <MoviesList>
-        {TVShowsList?.map((show) => (
-          <Movie key={show.id}>
-            {show.title}
-          </Movie>
+        {TVShowsList?.map(({ id, image, title }) => (
+          <MovieBox key={id} image={image} title={title} />
         ))}
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
+        <Movie>
+          <div>oi</div>
+          <h2>Titulo</h2>
+        </Movie>
       </MoviesList>
     </>
   );
 }
+
+const Loading = styled.div`
+  font-size: 30px;
+  color: #ffffff;
+`;
 
 const ListTitle = styled.h1`
   color: #ffffff;
@@ -78,13 +156,34 @@ const MoviesList = styled.ul`
   gap: 10px;
   overflow: scroll;
   overflow-y: hidden;
+  ::-webkit-scrollbar {
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb:horizontal {
+    background-color: #fff;
+  }
 `;
 
 const Movie = styled.li`
-  height: 150px;
   color: #ffffff;
-  background-color: red;
+  height: 200px;
+  width: 150px;
+  position: relative;
+  background-color: #fff;
   img {
-    width: 100px;
+    width: 150px;
+    height: auto; 
+    opacity: 0.8;
+  }
+  h2 {
+    font-size: 18px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  div {
+    width: 150px;
+    height: 200px;
+    background-color: red;
   }
 `;
