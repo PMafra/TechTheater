@@ -43,102 +43,118 @@ export default function Recommendations() {
   }
 
   return (
-    <>
-      <ListTitle>
-        Title
-      </ListTitle>
-      <MoviesList>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        {moviesList?.map(({ id, image, title }) => (
-          <MovieBox key={id} image={image} title={title} />
-        ))}
-      </MoviesList>
-      <ListTitle>
-        Title
-      </ListTitle>
-      <MoviesList>
-        {TVShowsList?.map(({ id, image, title }) => (
-          <MovieBox key={id} image={image} title={title} />
-        ))}
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-        <Movie>
-          <div>oi</div>
-          <h2>Titulo</h2>
-        </Movie>
-      </MoviesList>
-    </>
+    <RecommendationsContainer>
+      <SectionContainer>
+        <ListTitle>
+          Movies
+        </ListTitle>
+        <MoviesList>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          {moviesList?.map(({ id, image, title }) => (
+            <MovieBox key={id} image={image} title={title} />
+          ))}
+        </MoviesList>
+      </SectionContainer>
+      <SectionContainer>
+        <ListTitle>
+          TV Shows
+        </ListTitle>
+        <MoviesList>
+          {TVShowsList?.map(({ id, image, title }) => (
+            <MovieBox key={id} image={image} title={title} />
+          ))}
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+          <Movie>
+            <div>oi</div>
+            <h2>Titulo</h2>
+          </Movie>
+        </MoviesList>
+      </SectionContainer>
+    </RecommendationsContainer>
   );
 }
+
+const RecommendationsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`;
+
+const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 const Loading = styled.div`
   font-size: 30px;
@@ -165,22 +181,6 @@ const MoviesList = styled.ul`
 `;
 
 const Movie = styled.li`
-  color: #ffffff;
-  height: 200px;
-  width: 150px;
-  position: relative;
-  background-color: #fff;
-  img {
-    width: 150px;
-    height: auto; 
-    opacity: 0.8;
-  }
-  h2 {
-    font-size: 18px;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-  }
   div {
     width: 150px;
     height: 200px;
