@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
 import MovieApi from '../../../services/MovieApi';
 import MovieBox from '../../../components/HomePage/Movie';
 
 export default function Recommendations() {
   const [moviesList, setMoviesList] = useState('');
   const [TVShowsList, setTVShowsList] = useState('');
+  const { pathname } = useLocation();
 
   const obtainMoviesList = () => {
     MovieApi.getTopMovies()
@@ -49,10 +51,12 @@ export default function Recommendations() {
           Movies
         </ListTitle>
         <MoviesList>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
+          <Link to={`${pathname}/1`}>
+            <Movie>
+              <div>oi</div>
+              <h2>Titulo</h2>
+            </Movie>
+          </Link>
           <Movie>
             <div>oi</div>
             <h2>Titulo</h2>

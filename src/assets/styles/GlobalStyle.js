@@ -131,6 +131,7 @@ const GlobalStyle = createGlobalStyle`
     }
     a {
         text-decoration: none;
+        color: #fff;
     }
 `;
 export default GlobalStyle;

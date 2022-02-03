@@ -1,17 +1,24 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
 
-export default function Movie({ id, image, title }) {
+export default function Movie({
+  id, image, title,
+}) {
+  const { pathname } = useLocation();
+
   return (
-    <MovieBox key={id}>
-      <img src={image} alt="" />
-      <h2>{title}</h2>
-    </MovieBox>
+    <Link to={`${pathname}/${id}`}>
+      <MovieBox key={id}>
+        <img src={image} alt="" />
+        <h2>{title}</h2>
+      </MovieBox>
+    </Link>
   );
 }
 
 const MovieBox = styled.li`
-  color: #ffffff;
+  color: #fff;
   height: 200px;
   width: 150px;
   position: relative;
