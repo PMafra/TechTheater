@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Movie({
-  id, posterPath, title, configObject,
+  id, posterPath, title, posterBaseUrl,
 }) {
   const { pathname } = useLocation();
 
   return (
     <Link to={`${pathname}/${id}`}>
       <MovieBox key={id}>
-        <img src={`${configObject.images.base_url}w500/${posterPath}`} alt="" />
+        <img src={`${posterBaseUrl}w500/${posterPath}`} alt="" />
         <h2>{title}</h2>
       </MovieBox>
     </Link>
@@ -19,7 +19,7 @@ export default function Movie({
 
 const MovieBox = styled.li`
   color: #fff;
-  height: 200px;
+  height: 225px;
   width: 150px;
   position: relative;
   background-color: #fff;

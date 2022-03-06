@@ -64,7 +64,13 @@ export default function Recommendations() {
         </ListTitle>
         <MoviesList>
           {moviesList?.map(({ id, poster_path: posterPath, title }) => (
-            <MovieBox key={id} posterPath={posterPath} title={title} configObject={configObject} />
+            <MovieBox
+              key={id}
+              id={id}
+              posterPath={posterPath}
+              title={title}
+              posterBaseUrl={configObject.images.base_url}
+            />
           ))}
         </MoviesList>
       </SectionContainer>
@@ -74,7 +80,13 @@ export default function Recommendations() {
         </ListTitle>
         <MoviesList>
           {TVShowsList?.map(({ id, poster_path: posterPath, title }) => (
-            <MovieBox key={id} posterPath={posterPath} title={title} configObject={configObject} />
+            <MovieBox
+              key={id}
+              id={id}
+              posterPath={posterPath}
+              title={title}
+              posterBaseUrl={configObject.images.base_url}
+            />
           ))}
         </MoviesList>
       </SectionContainer>
@@ -115,13 +127,5 @@ const MoviesList = styled.ul`
   }
   ::-webkit-scrollbar-thumb:horizontal {
     background-color: #fff;
-  }
-`;
-
-const Movie = styled.li`
-  div {
-    width: 150px;
-    height: 200px;
-    background-color: red;
   }
 `;
