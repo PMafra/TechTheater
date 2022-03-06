@@ -56,6 +56,7 @@ export default function Recommendations() {
               id={id}
               posterPath={posterPath}
               title={title}
+              type="movie"
             />
           ))}
         </MoviesList>
@@ -71,6 +72,7 @@ export default function Recommendations() {
               id={id}
               posterPath={posterPath}
               title={title}
+              type="tv"
             />
           ))}
         </MoviesList>

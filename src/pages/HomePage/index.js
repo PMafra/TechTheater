@@ -30,7 +30,12 @@ export default function HomePage() {
             />
             <Route
               exact
-              path="/recommendations/:movieId"
+              path="/recommendations/:movieId/movie"
+              element={<MoviePage />}
+            />
+            <Route
+              exact
+              path="/recommendations/:showId/tv"
               element={<MoviePage />}
             />
           </Routes>

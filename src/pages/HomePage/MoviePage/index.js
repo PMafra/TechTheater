@@ -5,7 +5,7 @@ import MovieAPI from '../../../services/MovieApi';
 import MovieConfigContext from '../../../store/MovieConfigContext';
 
 export default function MoviePage() {
-  const { movieId } = useParams();
+  const { movieId, showId } = useParams();
   const [movieInfo, setMovieInfo] = useState('');
   const { movieConfig } = useContext(MovieConfigContext);
 
@@ -20,18 +20,37 @@ export default function MoviePage() {
       });
   };
 
+  const obtainTVShowInfo = () => {
+    MovieAPI.getTVShowInfo(showId)
+      .then((res) => {
+        console.log(res.data);
+        setMovieInfo(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    obtainMovieInfo();
+    if (movieId) {
+      obtainMovieInfo();
+    }
+    if (showId) {
+      obtainTVShowInfo();
+    }
   }, []);
+
+  if (!movieConfig || !movieInfo) {
+    return (<Loading>Loading</Loading>);
+  }
 
   return (
     <PageContainer>
       <MovieBackground>
         <img src={`${movieConfig.images.base_url}original/${movieInfo.backdrop_path}`} alt="" />
-        {movieInfo.original_title}
       </MovieBackground>
       <Title>
-        {movieInfo.original_title}
+        {movieInfo.original_title || movieInfo.original_name}
       </Title>
     </PageContainer>
   );
@@ -62,4 +81,9 @@ const Title = styled.h1`
     @media (max-width: 600px) {
         font-size: 30px;
     }
+`;
+
+const Loading = styled.div`
+  font-size: 30px;
+  color: #ffffff;
 `;
