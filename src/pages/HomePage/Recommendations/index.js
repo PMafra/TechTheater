@@ -1,18 +1,19 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
 import MovieApi from '../../../services/MovieApi';
 import MovieBox from '../../../components/HomePage/Movie';
 
 export default function Recommendations() {
   const [moviesList, setMoviesList] = useState('');
   const [TVShowsList, setTVShowsList] = useState('');
+  const [configObject, setConfigObject] = useState('');
 
   const obtainMoviesList = () => {
     MovieApi.getTopMovies()
       .then((res) => {
-        setMoviesList(res.data.items.filter((item, i) => i < 15));
+        console.log(res.data);
+        setMoviesList(res.data.results);
       })
       .catch((err) => {
         console.log(err);
@@ -22,8 +23,19 @@ export default function Recommendations() {
   const obtainTVShowsList = () => {
     MovieApi.getTopTVShows()
       .then((res) => {
-        setTVShowsList(res.data.items.filter((item, i) => i < 15));
-        console.log(res.data.items.filter((item, i) => i < 15));
+        console.log(res.data);
+        setTVShowsList(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const obtainConfigVariables = () => {
+    MovieApi.configURL()
+      .then((res) => {
+        console.log(res.data);
+        setConfigObject(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -33,9 +45,10 @@ export default function Recommendations() {
   useEffect(() => {
     obtainMoviesList();
     obtainTVShowsList();
+    obtainConfigVariables();
   }, []);
 
-  if (!moviesList || !TVShowsList) {
+  if (!moviesList || !TVShowsList || !configObject) {
     return (
       <Loading>
         loading
@@ -50,8 +63,8 @@ export default function Recommendations() {
           Movies
         </ListTitle>
         <MoviesList>
-          {moviesList?.map(({ id, image, title }) => (
-            <MovieBox key={id} image={image} title={title} />
+          {moviesList?.map(({ id, poster_path: posterPath, title }) => (
+            <MovieBox key={id} posterPath={posterPath} title={title} configObject={configObject} />
           ))}
         </MoviesList>
       </SectionContainer>
@@ -60,8 +73,8 @@ export default function Recommendations() {
           TV Shows
         </ListTitle>
         <MoviesList>
-          {TVShowsList?.map(({ id, image, title }) => (
-            <MovieBox key={id} image={image} title={title} />
+          {TVShowsList?.map(({ id, poster_path: posterPath, title }) => (
+            <MovieBox key={id} posterPath={posterPath} title={title} configObject={configObject} />
           ))}
         </MoviesList>
       </SectionContainer>
