@@ -7,7 +7,6 @@ import MovieBox from '../../../components/HomePage/Movie';
 export default function Recommendations() {
   const [moviesList, setMoviesList] = useState('');
   const [TVShowsList, setTVShowsList] = useState('');
-  const [configObject, setConfigObject] = useState('');
 
   const obtainMoviesList = () => {
     MovieApi.getTopMovies()
@@ -31,24 +30,12 @@ export default function Recommendations() {
       });
   };
 
-  const obtainConfigVariables = () => {
-    MovieApi.configURL()
-      .then((res) => {
-        console.log(res.data);
-        setConfigObject(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
     obtainMoviesList();
     obtainTVShowsList();
-    obtainConfigVariables();
   }, []);
 
-  if (!moviesList || !TVShowsList || !configObject) {
+  if (!moviesList || !TVShowsList) {
     return (
       <Loading>
         loading
@@ -69,7 +56,6 @@ export default function Recommendations() {
               id={id}
               posterPath={posterPath}
               title={title}
-              posterBaseUrl={configObject.images.base_url}
             />
           ))}
         </MoviesList>
@@ -85,7 +71,6 @@ export default function Recommendations() {
               id={id}
               posterPath={posterPath}
               title={title}
-              posterBaseUrl={configObject.images.base_url}
             />
           ))}
         </MoviesList>

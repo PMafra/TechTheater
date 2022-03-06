@@ -1,13 +1,37 @@
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import MovieAPI from '../../../services/MovieApi';
+import MovieConfigContext from '../../../store/MovieConfigContext';
 
 export default function MoviePage() {
+  const { movieId } = useParams();
+  const [movieInfo, setMovieInfo] = useState('');
+  const { movieConfig } = useContext(MovieConfigContext);
+
+  const obtainMovieInfo = () => {
+    MovieAPI.getMovieInfo(movieId)
+      .then((res) => {
+        console.log(res.data);
+        setMovieInfo(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    obtainMovieInfo();
+  }, []);
+
   return (
     <PageContainer>
       <MovieBackground>
-        Big image here
+        <img src={`${movieConfig.images.base_url}original/${movieInfo.backdrop_path}`} alt="" />
+        {movieInfo.original_title}
       </MovieBackground>
       <Title>
-        Movie Title Here!
+        {movieInfo.original_title}
       </Title>
     </PageContainer>
   );
@@ -19,11 +43,14 @@ const PageContainer = styled.div`
 `;
 
 const MovieBackground = styled.div`
-    width: 100%;
-    height: 300px;
-    background-color: blue;
-    @media (max-width: 600px) {
-        height: 200px;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 300px;
+      background-color: blue;
+      @media (max-width: 600px) {
+          height: 200px;
+      }
     }
 `;
 
