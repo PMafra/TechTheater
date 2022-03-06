@@ -2,10 +2,10 @@ import api from './api';
 
 export default class MovieApi {
   static getTopMovies() {
-    return api.get(`/MostPopularMovies/${process.env.REACT_APP_IMDB_KEY || 'k_0bxzff2h'}`);
+    return api.get(`/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}`);
   }
 
   static getTopTVShows() {
-    return api.get(`/MostPopularTvs/${process.env.REACT_APP_IMDB_KEY || 'k_0bxzff2h'}`);
+    return api.get(`/tv/popular?api_key=${process.env.REACT_APP_TMDB_KEY}`);
   }
 }

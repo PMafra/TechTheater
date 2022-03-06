@@ -8,7 +8,6 @@ import MovieBox from '../../../components/HomePage/Movie';
 export default function Recommendations() {
   const [moviesList, setMoviesList] = useState('');
   const [TVShowsList, setTVShowsList] = useState('');
-  const { pathname } = useLocation();
 
   const obtainMoviesList = () => {
     MovieApi.getTopMovies()
@@ -51,44 +50,6 @@ export default function Recommendations() {
           Movies
         </ListTitle>
         <MoviesList>
-          <Link to={`${pathname}/1`}>
-            <Movie>
-              <div>oi</div>
-              <h2>Titulo</h2>
-            </Movie>
-          </Link>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
           {moviesList?.map(({ id, image, title }) => (
             <MovieBox key={id} image={image} title={title} />
           ))}
@@ -102,46 +63,6 @@ export default function Recommendations() {
           {TVShowsList?.map(({ id, image, title }) => (
             <MovieBox key={id} image={image} title={title} />
           ))}
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
-          <Movie>
-            <div>oi</div>
-            <h2>Titulo</h2>
-          </Movie>
         </MoviesList>
       </SectionContainer>
     </RecommendationsContainer>
