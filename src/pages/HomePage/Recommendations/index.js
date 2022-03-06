@@ -66,12 +66,12 @@ export default function Recommendations() {
           TV Shows
         </ListTitle>
         <MoviesList>
-          {TVShowsList?.map(({ id, poster_path: posterPath, title }) => (
+          {TVShowsList?.map(({ id, poster_path: posterPath, name }) => (
             <MovieBox
               key={id}
               id={id}
               posterPath={posterPath}
-              title={title}
+              title={name}
               type="tv"
             />
           ))}
