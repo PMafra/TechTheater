@@ -47,7 +47,7 @@ export default function Recommendations() {
     <RecommendationsContainer>
       <SectionContainer>
         <ListTitle>
-          Movies
+          Popular Movies
         </ListTitle>
         <MoviesList>
           {moviesList?.map(({ id, poster_path: posterPath, title }) => (
@@ -63,7 +63,7 @@ export default function Recommendations() {
       </SectionContainer>
       <SectionContainer>
         <ListTitle>
-          TV Shows
+          Popular TV Shows
         </ListTitle>
         <MoviesList>
           {TVShowsList?.map(({ id, poster_path: posterPath, name }) => (

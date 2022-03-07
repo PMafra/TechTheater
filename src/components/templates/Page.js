@@ -2,21 +2,29 @@
 import styled from 'styled-components';
 
 export default function PageTemplate({
-  background, width, height, backgroundColor, children, mobileMaxWidth,
+  background, width, height, backgroundColor, children, mobileMaxWidth, isGlassed,
 }) {
   return (
-    <Page background={background} mobileMaxWidth={mobileMaxWidth}>
-      <Container
-        width={width}
-        height={height}
-        backgroundColor={backgroundColor}
-        mobileMaxWidth={mobileMaxWidth}
-      >
-        {children}
-      </Container>
-    </Page>
+    <BackPage background={background}>
+      <Page mobileMaxWidth={mobileMaxWidth} isGlassed={isGlassed}>
+        <Container
+          width={width}
+          height={height}
+          backgroundColor={backgroundColor}
+          mobileMaxWidth={mobileMaxWidth}
+        >
+          {children}
+        </Container>
+      </Page>
+    </BackPage>
+
   );
 }
+
+const BackPage = styled.div`
+  background: ${({ background }) => (background || 'red')};
+  background-size: cover;
+`;
 
 const Container = styled.div`
   height: 100vh;
@@ -37,8 +45,8 @@ const Container = styled.div`
 `;
 
 const Page = styled.div`
-  background: ${({ background }) => (background || 'red')};
-  background-size: cover;
+  background-color: ${({ isGlassed }) => (isGlassed ? 'rgba(255, 255, 255, .15)' : ('none'))};  
+  backdrop-filter: ${({ isGlassed }) => (isGlassed ? 'blur(5px)' : ('none'))};
   min-height: 100vh;
   width: 100%;
   padding: 0 30px;
